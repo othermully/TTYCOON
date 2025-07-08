@@ -1,6 +1,11 @@
 import { player } from "./player.js";
-import { upgrades, applyUpgrade } from "./upgrade.js";
+import { applyUpgrade } from "./upgrade.js";
 
+const upgradeBtn = document.getElementById('upgrade');
 
-applyUpgrade('clickPower');
-console.log(player.clickPower);
+upgradeBtn.addEventListener('click', handleUpgrade);
+
+function handleUpgrade() {
+	applyUpgrade('clickPower');
+}
+

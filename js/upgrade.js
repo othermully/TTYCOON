@@ -9,9 +9,12 @@ export const upgrades = [
 		get cost() {
 			return this.baseCost * Math.pow(2, this.level)
 		},
-		effect: () => {
+		effect() {
 			player.clickPower += 1;
 			this.level += 1;
+			console.log(this.name + ' Upgraded.');
+			console.log('Current Level: ' + this.level);
+			console.log('New cost: ' + this.cost);
 		}
 	},
 	{
@@ -22,16 +25,18 @@ export const upgrades = [
 		get cost() {
 			return this.baseCost * Math.pow(2, this.level)
 		},
-		effect: () => {
+		effect() {
 			player.autoIncome += 1;
-			this.level += 1;
+			this.level += 1
+			console.log(this.name + ' Upgraded.');
+			console.log('Current Level: ' + this.level);
+			console.log('New cost: ' + this.cost);
 		}
 	}
 ]
 
-export function applyUpgrade(id) {
+export async function applyUpgrade(id) {
 	const upgrade = upgrades.find(u => u.id === id);
 	upgrade.effect();
 	player.credits -= upgrade.cost;
-	console.log(upgrade);
 }
