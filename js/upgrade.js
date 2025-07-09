@@ -10,11 +10,10 @@ export const upgrades = [
 			return this.baseCost * Math.pow(2, this.level)
 		},
 		effect() {
+			player.credits -= this.cost;
 			player.clickPower += 1;
 			this.level += 1;
 			console.log(this.name + ' Upgraded.');
-			console.log('Current Level: ' + this.level);
-			console.log('New cost: ' + this.cost);
 		}
 	},
 	{
@@ -29,14 +28,16 @@ export const upgrades = [
 			player.autoIncome += 1;
 			this.level += 1
 			console.log(this.name + ' Upgraded.');
-			console.log('Current Level: ' + this.level);
-			console.log('New cost: ' + this.cost);
 		}
 	}
 ]
 
 export async function applyUpgrade(id) {
 	const upgrade = upgrades.find(u => u.id === id);
-	upgrade.effect();
-	player.credits -= upgrade.cost;
+	if (player.credits < upgrade.cost) {
+		console.log("Can't afford upgrade");
+	}
+	else {
+		upgrade.effect();
+	}
 }

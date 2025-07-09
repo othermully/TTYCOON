@@ -2,9 +2,43 @@
 <html>
 	<head>
 		<script type='module' src='./js/main.js'></script>
+		<link rel="stylesheet" href="./style.css">
 	</head>
 	<body>
-		<button id="upgrade">Upgrade</button>
+		<!-- Title/Header -->
+		<div class="section" id="header">
+			<h1>Title</h1>
+		</div>
+
+		<!-- Resources -->
+		<div class="section" id="resources">
+			<p>Credits: <span id="player-credits">0</span></p>
+			<p>Data: <span id="player-data">0</span></p>
+			<p>Click Power: <span id="player-click-power">0</span></p>
+		</div>
+
+		<!-- Clicking Section -->
+		<div class="section" id="click-section">
+			<button id="hack-button">[Hack]</button>
+			<button id="sell-button">[Sell Data]</button>
+		</div>
+
+		<!-- Upgrades section -->
+		<div class="section" id="upgrade-section">
+			<h3>Upgrades</h3>
+			<div id="upgrades-list">
+				<span id="click-power-upgrade">
+					<button id="click-power-upgrade-btn">+ [Click Power]</button>
+				</span>
+
+			</div>
+		</div>
+
+		<!-- Log Section -->
+		<div class="section" id="log-section">
+			<h3>Log</h3>
+			<div id="log"></div>
+		</div>
 	</body>
 
 </html>
