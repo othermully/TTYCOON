@@ -1,5 +1,16 @@
 import { player } from './player.js';
 
+const playerCredits = document.getElementById("player-credits")
+const playerData = document.getElementById("player-data");
+
+const playerClickPower = document.getElementById("player-click-power");
+const clickPowerLevel = document.getElementById("click-power-level");
+const clickPowerCost = document.getElementById("click-power-cost");
+
+const autoClickerLevel = document.getElementById("auto-clicker-level");
+const autoClickerCost = document.getElementById("auto-clicker-cost");
+
+
 export const upgrades = [
 	{
 		id: 'clickPower',
@@ -13,9 +24,13 @@ export const upgrades = [
 			player.credits -= this.cost;
 			player.clickPower += 1;
 			this.level += 1;
-			console.log(this.name + ' Upgraded.');
+			playerClickPower.innerHTML = player.clickPower;
+			clickPowerLevel.innerHTML = this.level;
+			clickPowerCost.innerHTML = this.cost;
+			playerCredits.innerHTML = player.credits;
 		}
 	},
+
 	{
 		id: 'autoClicker',
 		name: 'Botnet',
@@ -26,8 +41,15 @@ export const upgrades = [
 		},
 		effect() {
 			player.autoIncome += 1;
+			player.credits -= this.cost;
 			this.level += 1
 			console.log(this.name + ' Upgraded.');
+			autoClickerCost.innerHTML = this.cost;
+			autoClickerLevel.innerHTML = this.level;
+			setInterval(() => {
+				player.data += player.autoIncome;
+				updateUI();
+			}, 1000);
 		}
 	}
 ]
@@ -40,4 +62,8 @@ export async function applyUpgrade(id) {
 	else {
 		upgrade.effect();
 	}
+}
+
+async function updateUI() {
+	playerData.innerHTML = player.data;
 }

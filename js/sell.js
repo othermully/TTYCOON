@@ -10,8 +10,7 @@ export function sellData() {
 	else {
 		player.credits += player.data;
 		playerCredits.innerHTML = player.credits;
-		player.data = 0;
+		player.data -= player.data;
 		playerData.innerHTML = player.data;
-		console.log(player.credits);
 	}
 }
