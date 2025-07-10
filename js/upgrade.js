@@ -1,15 +1,5 @@
 import { player } from './player.js';
-
-const playerCredits = document.getElementById("player-credits")
-const playerData = document.getElementById("player-data");
-
-const playerClickPower = document.getElementById("player-click-power");
-const clickPowerLevel = document.getElementById("click-power-level");
-const clickPowerCost = document.getElementById("click-power-cost");
-
-const autoClickerLevel = document.getElementById("auto-clicker-level");
-const autoClickerCost = document.getElementById("auto-clicker-cost");
-
+import * as dom from './ui.js';
 
 export const upgrades = [
 	{
@@ -18,39 +8,65 @@ export const upgrades = [
 		baseCost: 10,
 		level: 0,
 		get cost() {
-			return this.baseCost * Math.pow(2, this.level)
+			return this.baseCost * Math.pow(2, this.level);
 		},
 		effect() {
 			player.credits -= this.cost;
 			player.clickPower += 1;
 			this.level += 1;
-			playerClickPower.innerHTML = player.clickPower;
-			clickPowerLevel.innerHTML = this.level;
-			clickPowerCost.innerHTML = this.cost;
-			playerCredits.innerHTML = player.credits;
+			dom.playerClickPower.innerHTML = player.clickPower;
+			dom.clickPowerLevel.innerHTML = this.level;
+			dom.clickPowerCost.innerHTML = this.cost;
+			dom.playerCredits.innerHTML = player.credits;
 		}
 	},
 
 	{
 		id: 'autoClicker',
-		name: 'Botnet',
+		name: 'Auto Scripts',
 		baseCost: 50,
 		level: 0,
 		get cost() {
-			return this.baseCost * Math.pow(2, this.level)
+			return this.baseCost * Math.pow(2, this.level);
 		},
 		effect() {
-			player.autoIncome += 1;
+			player.autoData += 1;
 			player.credits -= this.cost;
-			this.level += 1
+			dom.playerCredits.innerHTML = player.credits;
+			this.level += 1;
 			console.log(this.name + ' Upgraded.');
-			autoClickerCost.innerHTML = this.cost;
-			autoClickerLevel.innerHTML = this.level;
+			dom.autoClickerCost.innerHTML = this.cost;
+			dom.autoClickerLevel.innerHTML = this.level;
 			setInterval(() => {
-				player.data += player.autoIncome;
-				updateUI();
+				player.data += player.autoData;
+				applyAutoData();
 			}, 1000);
 		}
+	},
+
+	{
+		id: 'cryptoMiner',
+		name: 'Crypto Miner',
+		baseCost: 500,
+		level: 0,
+		get cost() {
+			return this.baseCost * Math.pow(2, this.level);
+		},
+		effect() {
+			player.autoCredits += 1;
+			player.credits -= this.cost;
+			dom.playerCredits.innerHTML = player.credits;
+			this.level += 1;
+			console.log(this.name, ' Upgraded');
+			dom.cryptoMinerCost.innerHTML = this.cost;
+			dom.cryptoMinerLevel.innerHTML = this.level;
+			setInterval(() => {
+				player.credits += player.autoCredits;
+				applyAutoCredits();
+			}, 1000);
+		}
+
+
 	}
 ]
 
@@ -64,6 +80,10 @@ export async function applyUpgrade(id) {
 	}
 }
 
-async function updateUI() {
-	playerData.innerHTML = player.data;
+async function applyAutoData() {
+	dom.playerData.innerHTML = player.data;
+}
+
+async function applyAutoCredits() {
+	dom.playerCredits.innerHTML = player.credits;
 }

@@ -1,18 +1,15 @@
-import { hack } from "./hacking.js"
+import { hack, infectComputers } from "./hacking.js"
 import { sellData } from "./sell.js";
 import { upgrades, applyUpgrade } from "./upgrade.js";
-
-// DOM Elements
-const autoClickerUpgradeBtn = document.getElementById("auto-clicker-upgrade-btn");
-const clickPowerUpgradeBtn = document.getElementById("click-power-upgrade-btn");
-const hackBtn = document.getElementById("hack-button");
-const sellBtn = document.getElementById("sell-button");
+import * as dom from './ui.js';
 
 // Listeners
-hackBtn.addEventListener("click", handleHack);
-sellBtn.addEventListener("click", handleSell);
-clickPowerUpgradeBtn.addEventListener("click", handleClickPowerUpgrade);
-autoClickerUpgradeBtn.addEventListener("click", handleAutoClickerUpgrade);
+dom.hackBtn.addEventListener("click", handleHack);
+dom.sellBtn.addEventListener("click", handleSell);
+dom.cryptoMinerUpgradeBtn.addEventListener("click", handleCryptoMinerUpgrade);
+dom.clickPowerUpgradeBtn.addEventListener("click", handleClickPowerUpgrade);
+dom.autoClickerUpgradeBtn.addEventListener("click", handleAutoClickerUpgrade);
+dom.infectComputersBtn.addEventListener("click", handleInfectComputers);
 
 // Event Handlers
 function handleHack() {
@@ -28,6 +25,15 @@ function handleClickPowerUpgrade() {
 }
 
 function handleAutoClickerUpgrade() {
-	applyUpgrade("autoClicker")
+	applyUpgrade("autoClicker");
 }
+
+function handleCryptoMinerUpgrade() {
+	applyUpgrade("cryptoMiner");
+}
+
+function handleInfectComputers() {
+	infectComputers();
+}
+
 
