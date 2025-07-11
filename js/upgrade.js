@@ -17,7 +17,6 @@ export const upgrades = [
 			dom.playerClickPower.innerHTML = player.clickPower;
 			dom.clickPowerLevel.innerHTML = this.level;
 			dom.clickPowerCost.innerHTML = this.cost;
-			dom.playerCredits.innerHTML = player.credits;
 		}
 	},
 
@@ -37,10 +36,7 @@ export const upgrades = [
 			console.log(this.name + ' Upgraded.');
 			dom.autoClickerCost.innerHTML = this.cost;
 			dom.autoClickerLevel.innerHTML = this.level;
-			setInterval(() => {
-				player.data += player.autoData;
-				applyAutoData();
-			}, 1000);
+			dom.playerDataPerSecond.innerHTML = player.autoData;
 		}
 	},
 
@@ -60,12 +56,7 @@ export const upgrades = [
 			console.log(this.name, ' Upgraded');
 			dom.cryptoMinerCost.innerHTML = this.cost;
 			dom.cryptoMinerLevel.innerHTML = this.level;
-			setInterval(() => {
-				player.credits += player.autoCredits;
-				applyAutoCredits();
-			}, 1000);
 		}
-
 
 	}
 ]
@@ -80,10 +71,3 @@ export async function applyUpgrade(id) {
 	}
 }
 
-async function applyAutoData() {
-	dom.playerData.innerHTML = player.data;
-}
-
-async function applyAutoCredits() {
-	dom.playerCredits.innerHTML = player.credits;
-}
