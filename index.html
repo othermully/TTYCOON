@@ -20,11 +20,24 @@
 		<!-- Resources -->
 		<div class="section" id="resources">
 			<h3>Resources</h3>
-			<p>Credits: <span id="player-credits">0</span> (<span id="creds-per-sec">0</span>/s)</p>
-			<p>Data: <span id="player-data">0</span> (<span id="data-per-sec">0</span>/s)</p>
-			<p>Click Power: <span id="player-click-power">1</span></p>
-			<p>Botnet Size: <span id="player-botnet-power">0</span></p>
-			<p>Compute Power: <span id="player-compute-power">1</span>Ghz</p>
+			<p title="Buying crypto with credits reduces your heat meter.">
+				Crypto: <span id="player-crypto">0</span> (<span id="crypto-per-sec">0</span>/s)
+			</p>
+			<p title="Credits are gained by selling data, acts as unlaundered money">
+				Credits: <span id="player-credits">0</span> (<span id="creds-per-sec">0</span>/s)
+			</p>
+			<p title="Data is used for hacks and selling for credits">
+				Data: <span id="player-data">0</span> (<span id="data-per-sec">0</span>/s)
+			</p>
+			<p title="Increase data per click">
+				Click Power: <span id="player-click-power">1</span>
+			</p>
+			<p title="Larger botnets increase risk, but amplify passive gains">
+				Botnet Size: <span id="player-botnet-power">0</span>
+			</p>
+			<p title="Compute power amplifies all resource collection">
+				Compute Power: <span id="player-compute-power">1</span>Ghz
+			</p>
 		</div>
 
 		<!-- Clicking Section -->
@@ -69,6 +82,13 @@
 					<button id="buy-cpu-upgrade-btn"> [Upgrade CPU] </button>
 					<span id="buy-cpu-upgrade-cost">300</span>
 				</span>
+			</div>
+		</div>
+
+		<!-- Black Market -->
+		<div class="section" id="shop-section">
+			<h3>Dark Web Market</h3>
+			<div id="blackmarket-list">
 			</div>
 		</div>
 

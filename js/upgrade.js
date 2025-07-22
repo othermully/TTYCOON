@@ -8,12 +8,15 @@ export const upgrades = [
 		baseCost: 10,
 		level: 0,
 		get cost() {
+			// Currently doubles cost each level increase	
 			return this.baseCost * Math.pow(2, this.level);
 		},
 		effect() {
 			player.credits -= this.cost;
 			player.clickPower += 1;
 			this.level += 1;
+
+			// Seprate DOM stuff in ui.js function?
 			dom.playerClickPower.innerHTML = player.clickPower;
 			dom.clickPowerLevel.innerHTML = this.level;
 			dom.clickPowerCost.innerHTML = this.cost;
@@ -34,6 +37,8 @@ export const upgrades = [
 			dom.playerCredits.innerHTML = player.credits;
 			this.level += 1;
 			console.log(this.name + ' Upgraded.');
+
+			// Seprate DOM stuff in ui.js function?
 			dom.autoClickerCost.innerHTML = this.cost;
 			dom.autoClickerLevel.innerHTML = this.level;
 			dom.playerDataPerSecond.innerHTML = player.autoData;
@@ -51,9 +56,11 @@ export const upgrades = [
 		effect() {
 			player.autoCredits += 1;
 			player.credits -= this.cost;
-			dom.playerCredits.innerHTML = player.credits;
 			this.level += 1;
 			console.log(this.name, ' Upgraded');
+
+			// Seprate DOM stuff in ui.js function?
+			dom.playerCredits.innerHTML = player.credits;
 			dom.cryptoMinerCost.innerHTML = this.cost;
 			dom.cryptoMinerLevel.innerHTML = this.level;
 		}

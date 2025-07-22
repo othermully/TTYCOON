@@ -1,6 +1,7 @@
 export class Player {
 	constructor() {
 		this.credits = 0;
+		this.crypto = 0;
 		this.clickPower = 1;
 		this.autoData = 0;
 		this.autoCredits = 0;

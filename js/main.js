@@ -27,18 +27,22 @@ function handleSell() {
 
 function handleClickPowerUpgrade() {
 	applyUpgrade("clickPower");
+	// Call render function for ui stuff here
 }
 
 function handleAutoClickerUpgrade() {
 	applyUpgrade("autoClicker");
+	// Call render function for ui stuff here
 }
 
 function handleCryptoMinerUpgrade() {
 	applyUpgrade("cryptoMiner");
+	// Call render function for ui stuff here
 }
 
 function handleInfectComputers() {
 	infectComputers();
+	// Call render function for ui stuff here
 }
 
 // Auto update data - evetually put into its own engine.js file as it grows

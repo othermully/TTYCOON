@@ -10,6 +10,8 @@ export const playerBotnetSize = document.getElementById("player-botnet-power");
 export const playerComputePower = document.getElementById("player-compute-power");
 export const playerCreditsPerSecond = document.getElementById("creds-per-sec");
 export const playerDataPerSecond = document.getElementById("data-per-sec");
+export const playerCrypto = document.getElementById("player-crypto");
+export const playerCryptoPerSecond = document.getElementById("player-crypto-per-sec")
 
 // Upgrades Section
 export const clickPowerLevel = document.getElementById("click-power-level");
@@ -32,6 +34,8 @@ export const infectComputersBtn = document.getElementById("infect-button");
 export const upgradeCpuBtn = document.getElementById("buy-cpu-upgrade-btn");
 export const upgradeCpuCost = document.getElementById("buy-cpu-upgrade-cost");
 
+// Black Market Section
+
 // Use this to render fading text when user upgrades something
 export function renderUpgradeUnlock(name) {
 
@@ -39,6 +43,11 @@ export function renderUpgradeUnlock(name) {
 
 // Function to apply message in the log when user purchases items, etc
 export function logSomething(message) {
+
+}
+
+// UI update - When user doesn't have enough resources for a task
+export function showError(error) {
 
 }
 
